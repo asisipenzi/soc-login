@@ -1,0 +1,8 @@
+{
+    "require": {
+        "facebook/graph-sdk": "^5.5"
+    },
+    "require-dev": {
+        "guzzlehttp/guzzle": "5.0"
+    }
+}
