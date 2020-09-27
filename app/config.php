@@ -2,9 +2,9 @@
 
 return [
     'database' => [
-        'dsn' => 'mysql:host=localhost;dbname=fblogin',
-        'username' => 'root',
-        'password' => '309397as'
+        'dsn' => 'mysql:host=bojjpzxd2ycehnrypunn-mysql.services.clever-cloud.com;dbname=bojjpzxd2ycehnrypunn',
+        'username' => 'uoxxxlndwbgi5fef',
+        'password' => 'rQr4fad7HuCFZuBkaaHx'
     ],
     'fb' => [
         'id' => '1210438962688158',
