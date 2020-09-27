@@ -11,6 +11,6 @@ return [
         'secret' => 'ff05707c23eb64fee634f237d2b5a089',
         'version' => 'v2.9',
             'permission' => ['email'],
-        'callback_url' => 'http://localhost:8080/facebook/fb-callback.php'
+        'callback_url' => 'http://app-e26e8330-e894-462a-944e-0cbbfededfb7.cleverapps.io/fb-callback.php'
     ]
 ];
