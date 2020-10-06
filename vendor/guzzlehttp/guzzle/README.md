@@ -1,7 +1,7 @@
 Guzzle, PHP HTTP client and webservice framework
 ================================================
 
-[![Build Status](https://secure.travis-ci.org/guzzle/guzzle.png?branch=master)](http://travis-ci.org/guzzle/guzzle)
+[![Build Status](https://secure.travis-ci.org/guzzle/guzzle.svg?branch=master)](http://travis-ci.org/guzzle/guzzle)
 
 Guzzle is a PHP HTTP client that makes it easy to send HTTP requests and
 trivial to integrate with web services.
@@ -52,14 +52,10 @@ The recommended way to install Guzzle is through
 curl -sS https://getcomposer.org/installer | php
 ```
 
-Next, update your project's composer.json file to include Guzzle:
+Next, run the Composer command to install the latest stable version of Guzzle:
 
-```javascript
-{
-    "require": {
-        "guzzlehttp/guzzle": "~5.0"
-    }
-}
+```bash
+composer.phar require guzzlehttp/guzzle
 ```
 
 After installing, you need to require Composer's autoloader:

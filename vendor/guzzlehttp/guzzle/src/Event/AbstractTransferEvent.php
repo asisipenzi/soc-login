@@ -2,6 +2,7 @@
 namespace GuzzleHttp\Event;
 
 use GuzzleHttp\Message\ResponseInterface;
+use GuzzleHttp\Ring\Future\FutureInterface;
 
 /**
  * Event that contains transfer statistics, and can be intercepted.
@@ -19,21 +20,33 @@ abstract class AbstractTransferEvent extends AbstractRequestEvent
      */
     public function getTransferInfo($name = null)
     {
-        return !$name
-            ? $this->transaction->transferInfo
-            : (isset($this->transaction->transferInfo[$name])
-                ? $this->transaction->transferInfo[$name]
-                : null);
+        if (!$name) {
+            return $this->transaction->transferInfo;
+        }
+
+        return isset($this->transaction->transferInfo[$name])
+            ? $this->transaction->transferInfo[$name]
+            : null;
     }
 
     /**
-     * Get the response
+     * Returns true/false if a response is available.
+     *
+     * @return bool
+     */
+    public function hasResponse()
+    {
+        return !($this->transaction->response instanceof FutureInterface);
+    }
+
+    /**
+     * Get the response.
      *
      * @return ResponseInterface|null
      */
     public function getResponse()
     {
-        return $this->transaction->response;
+        return $this->hasResponse() ? $this->transaction->response : null;
     }
 
     /**

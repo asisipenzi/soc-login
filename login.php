@@ -28,7 +28,7 @@
             <h2>OR</h2>
             <div class="social">
                 <a href="<?= $callbackUrl ?>" class="btn btn-primary btn-lg btn-block">Login With Facebook</a>
-                <a href="" class="btn btn-danger btn-lg btn-block">Login With Google</a>
+                <a href="<?= $googleLoginUrl ?>" class="btn btn-danger btn-lg btn-block">Login With Google</a>
                 <a href="" class="btn btn-lg btn-block github">Login With GitHub</a>
             </div>
 

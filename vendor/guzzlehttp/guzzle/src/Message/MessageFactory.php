@@ -40,9 +40,10 @@ class MessageFactory implements MessageFactoryInterface
 
     /** @var array Default allow_redirects request option settings  */
     private static $defaultRedirect = [
-        'max'     => 5,
-        'strict'  => false,
-        'referer' => false
+        'max'       => 5,
+        'strict'    => false,
+        'referer'   => false,
+        'protocols' => ['http', 'https']
     ];
 
     /**
@@ -86,7 +87,7 @@ class MessageFactory implements MessageFactoryInterface
         unset($options['config']);
 
         // Use a POST body by default
-        if ($method == 'POST'
+        if (strtoupper($method) == 'POST'
             && !isset($options['body'])
             && !isset($options['json'])
         ) {
@@ -193,14 +194,13 @@ class MessageFactory implements MessageFactoryInterface
             case 'allow_redirects':
 
                 if ($value === false) {
-                    continue;
+                    continue 2;
                 }
 
                 if ($value === true) {
                     $value = self::$defaultRedirect;
-                } elseif (!isset($value['max'])) {
-                    throw new Iae('allow_redirects must be true, false, or an '
-                        . 'array that contains the \'max\' key');
+                } elseif (!is_array($value)) {
+                    throw new Iae('allow_redirects must be true, false, or array');
                 } else {
                     // Merge the default settings with the provided settings
                     $value += self::$defaultRedirect;
@@ -213,7 +213,7 @@ class MessageFactory implements MessageFactoryInterface
             case 'decode_content':
 
                 if ($value === false) {
-                    continue;
+                    continue 2;
                 }
 
                 $config['decode_content'] = true;
@@ -227,12 +227,8 @@ class MessageFactory implements MessageFactoryInterface
                 if (!is_array($value)) {
                     throw new Iae('header value must be an array');
                 }
-
-                // Do not overwrite existing headers
                 foreach ($value as $k => $v) {
-                    if (!$request->hasHeader($k)) {
-                        $request->setHeader($k, $v);
-                    }
+                    $request->setHeader($k, $v);
                 }
                 break;
 
@@ -255,7 +251,7 @@ class MessageFactory implements MessageFactoryInterface
             case 'auth':
 
                 if (!$value) {
-                    continue;
+                    continue 2;
                 }
 
                 if (is_array($value)) {
@@ -358,7 +354,7 @@ class MessageFactory implements MessageFactoryInterface
                 if (isset($this->customOptions[$key])) {
                     $fn = $this->customOptions[$key];
                     $fn($request, $value);
-                    continue;
+                    continue 2;
                 }
 
                 throw new Iae("No method can handle the {$key} config key");
