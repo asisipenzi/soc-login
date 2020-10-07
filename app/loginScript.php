@@ -1,5 +1,6 @@
 <?php
-require_once  __DIR__ . '/database.php';
+require_once __DIR__ . '/database.php';
+require_once __DIR__ . '/gm_setup.php';
 require_once __DIR__ . '/fb_setup.php';
 
 if(isset($_POST['submitBtn'], $_POST['email'])){

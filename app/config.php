@@ -14,9 +14,9 @@ return [
         'callback_url' => 'http://localhost:8080/facebook/fb-callback.php'
     ],
     'google' => [
-     'id' => '591947943239-gjfo7e67injjrje6lgpcvbn5mqam3tmn.apps.googleusercontent.com',
-     'secret'=> 'E1mFCdeoX3MyNXNOz-0MpEN8',
-     'callback_url' => 'http://localhost:8080/gm-callback.php',
-     'scope' => ['https://www.googleapis.com/auth/userinfo.profile','https://www.googleapis.com/auth/userinfo.email']
+        'id' => '591947943239-gjfo7e67injjrje6lgpcvbn5mqam3tmn.apps.googleusercontent.com',
+        'secret'=> 'E1mFCdeoX3MyNXNOz-0MpEN8',
+        'callback_url' => 'http://localhost:8080/gm-callback.php',
+        'scope' => ['https://www.googleapis.com/auth/userinfo.profile','https://www.googleapis.com/auth/userinfo.email']
     ]
 ];
